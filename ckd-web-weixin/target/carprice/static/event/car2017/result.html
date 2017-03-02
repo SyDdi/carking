@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <title></title>
+    <link href="/static/css/game_css.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+<body>
+
+<div class="intro_game_header_02" id="carImg"></div>
+<div class="intro_game_title01">
+    <dl>
+        <dt id="desc"></dt>
+        <dd id="carName"></dd>
+    </dl>
+</div>
+<div class="intro_game_zfy">
+    <ul>
+        <li>祝您2017年心想事成！</li>
+    </ul>
+</div>
+<div class="intro_game_button02">
+    <dl>
+        <dt>
+            <button class="t1" onclick='window.location.href = "/static/event/car2017/index.html"'>我也试试</button>
+        </dt>
+        <dd>
+            <button class="t2" onclick='document.querySelector(".intro_game_fx").style.display=""'>分享</button>
+        </dd>
+    </dl>
+</div>
+
+<div class="intro_game_erwm1">
+    <img src="/static/images/event/car2017/intro_game_pic01.gif">
+</div>
+
+<div class="intro_game_fx" style="display: none;" onclick='document.querySelector(".intro_game_fx").style.display="none"'>
+    <img src="/static/images/event/car2017/intro_car_details_02.png">
+</div>
+<a class="floatBtn music_on" id="musicSwitch" onclick="musicSwitch();" style="right:20px; top:20px;"></a>
+<script type="text/javascript" src="/static/js/event/car2017/gewara.js"></script>
+<audio id="myaudio" src="/static/music/bg_music.mp3" loop="loop" autoplay="autoplay"></audio>
+
+<script>
+    var audioLoaded=false;
+    var myaudio = document.getElementById('myaudio');
+    if(/i(Phone|P(o|a)d)/.test(navigator.userAgent)){
+        $(document).on('touchstart', function (e) {
+            if(false == audioLoaded){
+                myaudio.load();
+                audioLoaded=true;
+            }
+        });
+    }
+
+    function musicSwitch(){
+        var myaudio = document.getElementById('myaudio');
+        var _this=$('#musicSwitch');
+        if(_this.hasClass('music_on')||_this.hasClass(' music_on')) {
+            _this.removeClass('music_on');
+            _this.addClass('music_off');
+            myaudio.pause();
+        }
+        else if(_this.hasClass('music_off')||_this.hasClass(' music_off')){
+            _this.removeClass('music_off');
+            _this.addClass('music_on');
+            myaudio.play();
+        }
+    }
+
+    document.getElementById('myaudio').play();
+
+    var skip=function(){
+        showPage(1);
+    }
+    var showRules=function() {
+        $('#popRules').show();
+    }
+    var pages=$('.page');
+    var showPage=function(i){
+        pages.hide();
+        pages.eq(i).show();//显示
+
+    }
+
+</script>
+
+</body>
+<script>
+
+    window.onload = function () {
+        var userName = GetQueryString("userName");
+        var carName = GetQueryString("carName");
+        var imgName = GetQueryString("imgName");
+
+        if (userName != null && userName != "") {
+            //设置title 等信息
+            var desc = userName + "2017年的座驾是";
+            document.getElementById("desc").innerHTML = desc;
+            document.getElementById("carName").innerHTML = carName;
+            document.getElementById("carImg").innerHTML = '<img src="/static/images/event/car2017/' + imgName + '.jpg">';
+            document.title = desc + carName;
+
+            var i = document.createElement('iframe');
+            i.src = '//m.baidu.com/favicon.ico';
+            i.style.display = 'none';
+            setTimeout(function () {
+               // i.remove();
+            }, 9)
+            document.body.appendChild(i);
+        }
+    };
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return decodeURI(r[2]);
+        }
+        return null;
+    }
+
+</script>
+</html>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fed9ca6874b32c074b1602d4e1a78656";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>

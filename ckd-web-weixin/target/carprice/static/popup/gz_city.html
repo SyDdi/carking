@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+<title>选择地区-行情价</title>
+<link href="../css/css.css?20161020" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/getscript.js"></script>
+
+
+</head>
+
+<body>
+	<header>
+		<div class="menu_mc">
+			<dl>
+				<dd class="fh">
+					<a href="javascript:void(0);" onClick="javascript :history.back(-1);">关闭</a>
+				</dd>
+				<dt>选择地区</dt>
+				<dd></dd>
+			</dl>
+		</div>
+	</header>
+
+    <section class="mpT49"　>
+        <div class="intro_fhys03 mt10">定位城市：</div>
+    </section>
+
+	<section>
+		<div class="intro_fhys02 mt10">热门城市</div>
+	</section>
+
+	<section>
+		<div class="intro_xzdq_lst">
+			<ul>
+				<li><span id="1">北京</span></li>
+				<li><span id="73">上海</span></li>
+                <li><span id="2">天津</span></li>
+				<li><span id="257">重庆</span></li>
+
+			</ul>
+		</div>
+	</section>
+
+	<section class="hideClass" style="display: none">
+	<div class="intro_fhys02">历史选择</div>
+	</section>
+
+	<section class="hideClass" style="display: none">
+	<div class="intro_xzdq_lst">
+	<ul>
+	<li><span id="12">北京</span></li>
+	<li><span>上海</span></li>
+	<li><span>合肥</span></li>
+	</ul>
+	</div>
+	</section>
+
+	<section>
+		<div class="intro_fhys02">省份</div>
+	</section>
+
+	<section>
+		<div class="intro_xzdq_sf_lst"></div>
+	</section>
+
+	<script type="text/javascript">
+		function CityInfo(id,name){
+			this.id=id;
+			this.name=name;
+		}
+
+		function selectCity(cityId,provinceName ,cityName){
+			setCookie('city', cityName);
+			setCookie('cityId', cityId);
+
+			var cityArray=getHistoryCityArray();
+
+			var num = 0;
+			var newArray = new Array();
+			newArray[num++]=(new CityInfo(cityId,cityName));
+
+			for(var i=0;i<cityArray.length&& num<3 ;i++){
+				if(cityArray[i].id!=newArray[0].id){
+					newArray[num++] = cityArray[i];
+				}
+			}
+
+			for(var str="",i=0;i<newArray.length;i++){
+				str +="@"+newArray[i].id+"#"+newArray[i].name;
+			}
+			str = str.substring(1);
+			setCookie("historyCity",str);
+
+			window.location.href = "../../pinggu?"+Math.random();
+		}
+		function showHistorySelected(){
+			var cityArray=getHistoryCityArray();
+			var ulObj = $(".hideClass:last ul");
+			$(ulObj).find("li").remove();
+			for(var i=0;i<cityArray.length;i++){
+				$(ulObj).append("<li><span id='"+cityArray[i].id+"'>"+cityArray[i].name+"</span></li>");
+			}
+			if(cityArray.length>0){
+				$(".hideClass").show();
+			}
+		}
+
+		function getHistoryCityArray(){
+			var historyCity = getCookie("historyCity");
+			var ary = new Array();
+			try{
+				var historyArray = historyCity.split("@");
+				for(var i=0;i<historyArray.length;i++){
+					var str = historyArray[i].split("#");
+					var id=str[0];
+					var desc = str[1];
+					ary[i]=new CityInfo(id,desc);
+				}
+			}catch(e){
+
+			}
+			return ary;
+		}
+
+		function requestZones(){
+		$
+				.ajax({
+					// url: "http://120.26.120.93:8080/car/api/getZone",
+					url : "../../api/getZone",
+					type : "GET",
+					dataType : 'json',
+					success : function(result) {
+						localCity(result.data);
+						for ( var i in result.data) {
+							$('.intro_xzdq_sf_lst')
+									.append(
+											'<h id="province_' + result.data[i].provinceId + '"><span class="province_span">'
+													+ result.data[i].provinceName
+													+ '</span><ul style="display: none" class="province_ul" id="province_ul_' + result.data[i].provinceId + '"></ul></h>');
+							for ( var t in result.data[i].subData) {
+								$('#province_ul_' + result.data[i].provinceId)
+										.append(
+												'<li><span id =\"'+result.data[i].subData[t].zoneId+'\">'
+														+ result.data[i].subData[t].zoneName
+														+ '</span></li>')
+							}
+						}
+
+						$('.intro_xzdq_sf_lst').bind('click', function(e) {
+							$(e.target).children('.province_ul').slideToggle();
+							$(e.target).siblings('.province_ul').slideToggle();
+						});
+
+						$('ul>li').bind(
+								'click',
+								function(e) {
+									var provinceName =$(e.target).parents('h').children('.province_span').text();
+									var cityName = $(e.target).text();
+									selectCity( $(e.target).attr("id"),provinceName,cityName);
+								});
+					},
+					error : function(er) {
+						BackErr(er);
+					}
+				});
+		}
+
+
+		function localCity(data){
+			var geolocation = new BMap.Geolocation();
+			var gc = new BMap.Geocoder();
+			geolocation.getCurrentPosition( function(r) {   //定位结果对象会传递给r变量
+						if(this.getStatus() == BMAP_STATUS_SUCCESS)
+						{  //通过Geolocation类的getStatus()可以判断是否成功定位。
+							var pt = r.point;
+							gc.getLocation(pt, function(rs){
+								var addComp = rs.addressComponents;
+								console.log(addComp.province +"|"+ addComp.city  +"|"+ addComp.district  +"|"+ addComp.street  +"|"+ addComp.streetNumber);
+//							var data=zone;
+								var subData=null;
+								var flag=false;
+								for(var i=0;i<data.length;i++){
+									subData=data[i].subData;
+									if(subData!=null){
+										for(var j=0;j<subData.length;j++){
+											if(subData[j].zoneName.replace("市","")==addComp.city.replace("市","")){
+												$(".intro_fhys03").html("定位城市："+subData[j].zoneName);
+												$(".intro_fhys03").bind("click",function(){
+													try{
+														selectCity(subData[j].zoneId,data[i].provinceName ,subData[j].zoneName);
+													}catch (e){
+														//alert(e);
+													}
+												});
+												flag=true;
+												break;
+											}
+										}
+									}
+									if(flag){
+										break;
+									}
+								}
+
+							});
+						}
+						else
+						{
+							//关于状态码
+							//BMAP_STATUS_SUCCESS   检索成功。对应数值“0”。
+							//BMAP_STATUS_CITY_LIST 城市列表。对应数值“1”。
+							//BMAP_STATUS_UNKNOWN_LOCATION  位置结果未知。对应数值“2”。
+							//BMAP_STATUS_UNKNOWN_ROUTE 导航结果未知。对应数值“3”。
+							//BMAP_STATUS_INVALID_KEY   非法密钥。对应数值“4”。
+							//BMAP_STATUS_INVALID_REQUEST   非法请求。对应数值“5”。
+							//BMAP_STATUS_PERMISSION_DENIED 没有权限。对应数值“6”。(自 1.1 新增)
+							//BMAP_STATUS_SERVICE_UNAVAILABLE   服务不可用。对应数值“7”。(自 1.1 新增)
+							//BMAP_STATUS_TIMEOUT   超时。对应数值“8”。(自 1.1 新增)
+							switch( this.getStatus() )
+							{
+								case 2:
+									console.log( '位置结果未知 获取位置失败.' );
+									break;
+								case 3:
+									console.log( '导航结果未知 获取位置失败..' );
+									break;
+								case 4:
+									console.log( '非法密钥 获取位置失败.' );
+									break;
+								case 5:
+									console.log( '对不起,非法请求位置  获取位置失败.' );
+									break;
+								case 6:
+									console.log( '对不起,当前 没有权限 获取位置失败.' );
+									break;
+								case 7:
+									console.log( '对不起,服务不可用 获取位置失败.' );
+									break;
+								case 8:
+									console.log( '对不起,请求超时 获取位置失败.' );
+									break;
+
+							}
+							$(".intro_fhys03").html("定位城市：无法定位");
+						}
+
+					},
+					{enableHighAccuracy: true}
+			);
+		}
+
+		$(function(){
+			showHistorySelected();
+			requestZones();
+		});
+	</script>
+
+</body>
+</html>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fed9ca6874b32c074b1602d4e1a78656";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>

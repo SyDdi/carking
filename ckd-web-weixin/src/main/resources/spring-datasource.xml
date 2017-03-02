@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-task.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+	<!-- car库 -->
+	<bean id="dataSourceMobile" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"> 
+	    <property name="url" value="${car.url}" />
+	    <property name="username" value="${car.username}" />
+	    <property name="password" value="${car.password}" />
+	     
+	    <property name="filters" value="log4j" />
+	 
+	    <property name="maxActive" value="20" />
+	    <property name="initialSize" value="1" />
+	    <property name="maxWait" value="60000" />
+	    <property name="minIdle" value="1" />
+	 
+	    <property name="timeBetweenEvictionRunsMillis" value="3000" />
+	    <property name="minEvictableIdleTimeMillis" value="300000" />
+	 
+	    <property name="validationQuery" value="SELECT 'x'" />
+	    <property name="testWhileIdle" value="true" />
+	    <property name="testOnBorrow" value="false" />
+	    <property name="testOnReturn" value="false" />	    
+	</bean>
+
+	<bean id="sqlSessionFactoryBeanMobile" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceMobile" />
+		<property name="mapperLocations" value="classpath*:com/car/mp/persistence/write/*.xml" />
+	</bean>
+ 
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> 
+		<property name="basePackage" value="com.car.mp.persistence.write" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBeanMobile" />
+	</bean>
+	
+	<!-- car只读库 -->
+	<bean id="dataSourceMobileReadonly" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"> 
+	    <property name="url" value="${rcar.url}" />
+	    <property name="username" value="${rcar.username}" />
+	    <property name="password" value="${rcar.password}" />
+	     
+	    <property name="filters" value="log4j" />
+	 
+	    <property name="maxActive" value="20" />
+	    <property name="initialSize" value="1" />
+	    <property name="maxWait" value="60000" />
+	    <property name="minIdle" value="1" />
+	 
+	    <property name="timeBetweenEvictionRunsMillis" value="3000" />
+	    <property name="minEvictableIdleTimeMillis" value="300000" />
+	 
+	    <property name="validationQuery" value="SELECT 'x'" />
+	    <property name="testWhileIdle" value="true" />
+	    <property name="testOnBorrow" value="false" />
+	    <property name="testOnReturn" value="false" />	    
+	</bean>
+
+	<bean id="sqlSessionFactoryBeanMobileReadonly" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceMobileReadonly" />
+		<property name="mapperLocations" value="classpath*:com/car/mp/persistence/readonly/*.xml" />
+	</bean>
+ 
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"> 
+		<property name="basePackage" value="com.car.mp.persistence.readonly" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBeanMobileReadonly" />
+	</bean>
+	
+</beans>

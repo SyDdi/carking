@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-task.xsd">
+
+
+    <!--<context:property-placeholder location="classpath*:*.properties"/>-->
+    <!-- 从properties文件加载配置信息 -->
+    <bean id="propertyPlaceholderConfigurer"
+          class="com.car.core.config.CustomizedPropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:application.properties</value>
+                <value>classpath*:jdbc.properties</value>
+                <value>classpath*:wechat.properties</value>
+                <value>classpath*:redis.properties</value>
+            </list>
+        </property>
+        <property name="configureClasses">
+            <list>
+                <value>com.car.mp.config.ApplicationConfig</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--加入spring注解扫描-->
+    <context:component-scan base-package="com.car.mp.config,com.car.mp.annotation" />
+
+    <!--引入redis的配置-->
+    <import resource="applicationContext-redis.xml"/>
+
+    <!--基础数据库配置-->
+    <import resource="spring-datasource.xml"/>
+
+</beans>

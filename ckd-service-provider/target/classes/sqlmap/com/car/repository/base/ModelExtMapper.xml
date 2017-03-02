@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.car.repository.base.ModelExtMapper" >
+  <resultMap id="BaseResultMap" type="com.car.domain.ModelExt" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="model_id" property="modelId" jdbcType="INTEGER" />
+    <result column="base_info" property="baseInfo" jdbcType="VARCHAR" />
+    <result column="body_info" property="bodyInfo" jdbcType="VARCHAR" />
+    <result column="engine_info" property="engineInfo" jdbcType="VARCHAR" />
+    <result column="gearbox_info" property="gearboxInfo" jdbcType="VARCHAR" />
+    <result column="chassis_steering" property="chassisSteering" jdbcType="VARCHAR" />
+    <result column="wheel_brake" property="wheelBrake" jdbcType="VARCHAR" />
+    <result column="safety_info" property="safetyInfo" jdbcType="VARCHAR" />
+    <result column="control_info" property="controlInfo" jdbcType="VARCHAR" />
+    <result column="external_info" property="externalInfo" jdbcType="VARCHAR" />
+    <result column="internal_info" property="internalInfo" jdbcType="VARCHAR" />
+    <result column="seat_info" property="seatInfo" jdbcType="VARCHAR" />
+    <result column="multimedia_info" property="multimediaInfo" jdbcType="VARCHAR" />
+    <result column="lighting_info" property="lightingInfo" jdbcType="VARCHAR" />
+    <result column="glass_info" property="glassInfo" jdbcType="VARCHAR" />
+    <result column="air_conditioner_info" property="airConditionerInfo" jdbcType="VARCHAR" />
+    <result column="high_tech_info" property="highTechInfo" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

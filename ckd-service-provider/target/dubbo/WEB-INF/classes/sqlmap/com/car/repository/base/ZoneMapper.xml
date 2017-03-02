@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.repository.base.ZoneMapper">
+	<!-- 配置映射字段 -->
+	<!--<resultMap type="com.car.domain.Zone" id="t_sys_zone">-->
+		<!--<id column="id" property="id" jdbcType="BIGINT" />-->
+		<!--<result property="loginName" column="login_name" jdbcType="VARCHAR"/>-->
+		<!--<result property="realName" column="name" jdbcType="VARCHAR"/>-->
+		<!--<result property="registerDate" column="register_date" jdbcType="TIMESTAMP"/>-->
+	<!--</resultMap>-->
+
+</mapper>

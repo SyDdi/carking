@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+
+
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="ckd-portal-service"  />
+
+    <!--zookeeper注册中心 ,192.168.188.82:2181-->
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}" />
+
+    <!-- 使用multicast广播注册中心暴露服务地址 -->
+    <!--<dubbo:registry address="multicast://224.5.6.7:1234" />-->
+
+    <!-- 当ProtocolConfig和ServiceConfig某属性没有配置时,采用此缺省值 -->
+    <dubbo:provider timeout="10000" threadpool="fixed" threads="100" accepts="1000" />
+
+    <!--通讯配置-->
+    <dubbo:protocol name="dubbo"  dispatcher="all" threadpool="fixed" threads="20" port="20880" />
+    <dubbo:protocol name="hessian" port="${hessian.port}" contextpath="${hessian.contextpath}" server="servlet" />
+
+    <!-- 声明需要暴露的服务接口 -->
+    <!--文件上传protocol="hessian" -->
+    <dubbo:service protocol="hessian" interface="com.car.service.CommonUploadFileService" ref="CommonUploadFileService" />
+    <dubbo:service interface="com.car.service.TestDubbo" ref="testDubboService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IImageService" ref="IImageService" />
+
+    <!--微信-->
+    <dubbo:service protocol="dubbo" interface="com.car.service.IWechatService" ref="IWechatService" />
+
+    <!--DB-->
+    <dubbo:service protocol="dubbo" interface="com.car.service.IVehicleService" ref="IVehicleService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IProvinceService" ref="IProvinceService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IZoneService" ref="IZoneService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IBrandService" ref="IBrandService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IFactoryService" ref="IFactoryService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IFamilyService" ref="IFamilyService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IModelService" ref="IModelService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IChoiceService" ref="IChoiceService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IIssueService" ref="IIssueService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IReportService" ref="IReportService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IQuoteService" ref="IQuoteService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.IMessageService" ref="IMessageService" />
+
+    <dubbo:service protocol="dubbo" interface="com.car.service.IUserService" ref="IUserService" />
+    <dubbo:service protocol="dubbo" interface="com.car.service.ICollectionService" ref="ICollectionService"/>
+    <dubbo:service protocol="dubbo" interface="com.car.service.IPictureService" ref="IPictureService"/>
+    <dubbo:service protocol="dubbo" interface="com.car.service.IWeixinShareService" ref="IWeixinShareService"/>
+    <dubbo:service protocol="dubbo" interface="com.car.service.IPeopleRelationService" ref="IPeopleRelationService"/>
+    <dubbo:service protocol="dubbo" interface="com.car.service.IWeixinPushMsgService" ref="IWeixinPushMsgService"/>
+
+
+    <!-- 使用注解方式暴露接口 -->
+    <!--<dubbo:annotation package="com.car.service." />-->
+    <!-- 加入spring注解扫描 -->
+    <!--<context:component-scan base-package="com.car.service.impl" />-->
+
+</beans>

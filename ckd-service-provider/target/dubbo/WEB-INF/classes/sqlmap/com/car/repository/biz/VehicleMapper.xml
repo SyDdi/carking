@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.repository.biz.VehicleMapper">
+    <resultMap id="BaseResultMap" type="com.car.domain.Vehicle" >
+        <!--
+            WARNING - @mbg.generated
+          -->
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="brand_id" property="brandId" jdbcType="BIGINT" />
+        <result column="family_id" property="familyId" jdbcType="BIGINT" />
+        <result column="model_id" property="modelId" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="province_id" property="provinceId" jdbcType="BIGINT" />
+        <result column="zone_id" property="zoneId" jdbcType="BIGINT" />
+        <result column="reg_zone_id" property="regZoneId" jdbcType="BIGINT" />
+        <result column="car_year" property="carYear" jdbcType="VARCHAR" />
+        <result column="expect_price" property="expectPrice" jdbcType="BIGINT" />
+        <result column="reg_date" property="regDate" jdbcType="VARCHAR" />
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="public_date" property="publicDate" jdbcType="TIMESTAMP" />
+        <result column="status" property="status" jdbcType="SMALLINT" />
+        <result column="outer_color" property="outerColor" jdbcType="VARCHAR" />
+        <result column="miles" property="miles" jdbcType="VARCHAR" />
+        <result column="number_plate" property="numberPlate" jdbcType="VARCHAR" />
+        <result column="report_id" property="reportId" jdbcType="BIGINT" />
+        <result column="info" property="info" jdbcType="LONGVARCHAR" />
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+        <result column="update_user" property="updateUser" jdbcType="BIGINT" />
+        <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+        <result column="reg_province_id" property="regProvinceId" jdbcType="BIGINT" />
+        <result column="factory_id" property="factoryId" jdbcType="INTEGER" />
+        <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+        <result column="quote_count" property="quoteCount" jdbcType="INTEGER"/>
+        <result column="last_quote_date" property="lastQuoteDate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="selectVehicle" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select * from t_vehicle where 1=1
+        <if test="id != null and id>0">
+            and id = #{id}
+        </if>
+        <if test="stratDate != null">
+            and create_date <![CDATA[>=]]> #{stratDate}
+        </if>
+        <if test="endDate != null">
+            and create_date <![CDATA[<=]]> #{endDate}
+        </if>
+        <if test="brandId != null and brandId>0">
+            and brand_id = #{brandId}
+        </if>
+        <if test="familyId != null and familyId>0">
+            and family_id = #{familyId}
+        </if>
+        <if test="modelId != null and modelId>0">
+            and model_id = #{modelId}
+        </if>
+
+          limit #{pageNo} , #{pageSize}
+
+
+    </select>
+
+
+    <select id="selectVehiclPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select * from t_vehicle where 1=1
+        <if test="id != null and id>0">
+            and id = #{id}
+        </if>
+        <if test="stratDate != null">
+            and create_date <![CDATA[>=]]> #{stratDate}
+        </if>
+        <if test="endDate != null">
+            and create_date <![CDATA[<=]]> #{endDate}
+        </if>
+        <if test="brandId != null and brandId>0">
+            and brand_id = #{brandId}
+        </if>
+        <if test="familyId != null and familyId>0">
+            and family_id = #{familyId}
+        </if>
+        <if test="modelId != null and modelId>0">
+            and model_id = #{modelId}
+        </if>
+        <if test="quoteCountSmall != null and quoteCountSmall>0">
+            and quote_count <![CDATA[>=]]> #{quoteCountSmall}
+        </if>
+        <if test="quoteCountBig != null and quoteCountBig>0">
+            and quote_count <![CDATA[<=]]> #{quoteCountBig}
+        </if>
+        <if test="lastQuoteDateStart != null">
+            and last_quote_date <![CDATA[>=]]> #{lastQuoteDateStart}
+        </if>
+        <if test="lastQuoteDateEnd != null">
+            and last_quote_date <![CDATA[<=]]> #{lastQuoteDateEnd}
+        </if>
+        order by ${orderByColumn}
+    </select>
+
+    <select id="findCount" resultType="java.lang.Integer" >
+        SELECT count(1) from t_vehicle
+    </select>
+
+    <select id="findVehicleById" resultMap="BaseResultMap" >
+        SELECT * from t_vehicle where id = #{0}
+    </select>
+    <select id="selectVhclByUserId" resultMap="BaseResultMap">
+         SELECT * from t_vehicle where user_id = #{0} and is_delete = #{1}  order by public_date desc
+    </select>
+    <select id="selectVhclByUserId1" resultMap="BaseResultMap">
+        SELECT * from t_vehicle where user_id = #{0} and status = #{1}
+    </select>
+
+
+</mapper>

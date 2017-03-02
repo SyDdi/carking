@@ -1,0 +1,4 @@
+com\car\taglibs\picture\ImagesBaseUrlTag.class
+com\car\taglibs\token\TokenTag.class
+com\car\taglibs\page\PagerTag.class
+com\car\taglibs\parameter\ParametersTag.class

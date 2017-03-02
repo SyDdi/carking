@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ckd-service-nlp:war">
+    <output-path>$PROJECT_DIR$/../ckd-service-nlp/target</output-path>
+    <root id="archive" name="dubbo-nlp.war">
+      <element id="artifact" artifact-name="ckd-service-nlp:war exploded" />
+    </root>
+  </artifact>
+</component>

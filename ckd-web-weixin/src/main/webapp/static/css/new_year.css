@@ -1,0 +1,128 @@
+@charset "utf-8";
+body{margin:0px; padding:0px; text-decoration:none; background-color:#db3922; -webkit-tap-highlight-color:rgba(0,0,0,0); -webkit-tap-highlight-color: rgba(0,0,0,0);  
+-webkit-tap-highlight-color: transparent; /* For some Androids,个人感觉是低版本的安卓，4.0以下 */   font-family:"微软雅黑"}
+ul, li{list-style-type:none; padding:0px; margin:0px;}
+dl, dt, dd{padding:0px; margin:0px;}
+img{border:0px; margin:0px; padding:0px;}
+a{color:#019BFF; text-decoration:none; outline:none;}
+a:hover{color:#019BFF; text-decoration:none;}
+input:focus{outline:none;}
+input{-webkit-appearance:none;}
+
+body,html{width:100%; height:100%;}
+
+.clear{clear:both;}
+*{margin:0; padding:0;}
+.main{float:left;}
+.side{float:right;}
+.box{width:100%;}
+
+
+/*明年你开什么车*/
+.new_year_header{float:left; width: 100%;}
+.new_year_header img{float: left; width: 100%; height: 100%;}
+.new_year_title{float: left; width: 100%; font-size: 1.5em; font-weight: bold; line-height: 20px; color: #fff000; text-align: center; margin-top:77%;}
+.new_year_button01{float: left; width: 100%; margin-top: 0px; box-sizing:border-box; padding: 10px 10% 0px 10%;}
+.new_year_button01 dl{float: left; width: 100%;}
+.new_year_button01 dl dt{float:left; width: 100%; padding: 10px 0px;}
+.new_year_button01 dl dt input{float:left; font-size: 1.3em; line-height: 40px; text-align: center; width: 100%; border:1px solid #dcdcdc; background-color: #fdfdfd; border-radius: 5px; height:40px;}
+.new_year_button01 dl dd{float:left; width: 100%; padding: 10px 0px;}
+.new_year_button01 dl dd button{float: left; width: 100%; height:40px; border-radius: 5px; border: none; font-size: 1.3em; line-height: 40px; color: #FFFFFF; text-align: center;}
+.new_year_button01 dl dd button.t1{background-color: #e85900;}
+.new_year_button01 dl dd button.t2{background-color: #ff7722;}
+.new_year_copyright{float: left; width: 100%; font-size: 1.0em; line-height: 30px; color: #7b0004; text-align: center;}
+
+.new_year_header_02{float:left; width: 100%; text-align: center; padding: 10px 0px; margin-top:10px;}
+.new_year_header_02 img{width: 60%; height: auto; border-radius: 100%; overflow: hidden; border: 8px solid #f46c39;}
+.new_year_title01{float: left; width: 100%;}
+.new_year_title01 dl{float: left; width: 100%;}
+.new_year_title01 dl dt{float: left; width: 100%; font-size: 1.4em; font-weight: bold; margin-top:0px; line-height: 30px; color: #ffffff; text-align: center;}
+.new_year_title01 dl dd{float: left; width: 100%; font-size: 1.5em; font-weight: bold; margin-top:0px; line-height: 30px; color: #fff000; text-align: center;}
+.new_year_button02{float: left; width: 100%; box-sizing: border-box; padding: 0px 5%; margin-top:5px;}
+.new_year_button02 dl{float: left; width: 100%;}
+.new_year_button02 dl dt{float: left; width: 50%; text-align: center;}
+.new_year_button02 dl dd{float: right; width: 50%; text-align: center;}
+.new_year_button02 dl button{width: 80%; height:40px; border-radius: 5px; border: none; font-size: 1.3em; line-height: 40px; color: #FFFFFF; text-align: center;}
+.new_year_button02 dl dt button{background-color: #e85900;}
+.new_year_button02 dl dd button{background-color: #ff7722;}
+.new_year_erwm{float:left; width: 100%; margin-top:20px;}
+.new_year_erwm dl{float:left; width: 100%;}
+.new_year_erwm dl dt{float: left; width: 100%; text-align: center;}
+.new_year_erwm dl dt img{float:none; width: 30%;}
+.new_year_erwm dl dd{float: left; width: 100%; font-size: 1.0em; line-height: 30px; color: #7F7F7F; text-align: center;}
+.new_year_zfy{float: left; width: 100%; margin-top:5px;  box-sizing: border-box; padding: 0px 20px;}
+.new_year_zfy ul{float:left; width: 100%;}
+.new_year_zfy ul li{float:left; width: 100%;font-size: 1.0em; line-height: 30px; color: #ffa17e; text-align: center; padding-top:0px; border-top:1px solid #e05620;}
+.new_year_fx{float:left; width: 100%; height: 100%;  background-color:rgba(0,0,0,0.7); position: absolute; z-index: 1000; top:0px left:0px;}
+.new_year_fx img{float:right; width: 50%; height: auto; padding: 10px 20px 0px 0px;}
+/*明年你开什么车*/
+
+.new_year_erwm1{float:left; width: 100%; padding-top:5px;}
+.new_year_erwm1 img{float:left; width: 100%; height: auto;}
+
+.floatBtn{position:fixed;text-align:center;}
+#musicSwitch{width:30px; height:30px; display:block;background-size:100% 100%;}
+#musicSwitch.music_on{background:url(../images/newyear2017/musicIco_on.png) no-repeat; background-size:100% 100%;
+		-webkit-animation:music_on 3s linear infinite;-o-animation:music_on 3s linear infinite; -moz-animation:music_on 3s linear infinite; animation:music_on 3s linear infinite;}
+#musicSwitch.music_off{background:url(../images/newyear2017/musicIco_off.png) no-repeat;background-size:100% 100%;}
+
+.new_year_topbg{float:left; position:absolute; top:0px; left:0px; width: 100%; z-index:-1;}
+.new_year_topbg img{float:left; width: 100%; height: auto;}
+
+.new_year_bottombg{float:left; position:absolute; bottom:0px; left:0px; width: 100%; z-index:-2;}
+.new_year_bottombg img{float:left; width: 100%; height: auto;}
+
+@media (max-width:320px){
+    .new_year_header_02{padding: 5px 0px;}
+	.new_year_button02{margin-top:0px;}
+	.new_year_erwm1{padding-top:0px;}
+}
+	
+@keyframes music_on{
+			0% {transform:rotate(0deg);
+					-ms-transform:rotate(0deg);
+					-moz-transform:rotate(0deg);
+					-webkit-transform:rotate(0deg);
+					-o-transform:rotate(0deg);}
+			100% {transform:rotate(360deg);
+				-ms-transform:rotate(360deg);
+				-moz-transform:rotate(360deg);
+				-webkit-transform:rotate(360deg);
+				-o-transform:rotate(360deg);}
+		}
+		@-moz-keyframes music_on{
+			0% {transform:rotate(0deg);
+				-ms-transform:rotate(0deg);
+				-moz-transform:rotate(0deg);
+				-webkit-transform:rotate(0deg);
+				-o-transform:rotate(0deg);}
+			100% {transform:rotate(360deg);
+				-ms-transform:rotate(360deg);
+				-moz-transform:rotate(360deg);
+				-webkit-transform:rotate(360deg);
+				-o-transform:rotate(360deg);}
+		}
+		@-webkit-keyframes music_on{
+			0% {transform:rotate(0deg);
+				-ms-transform:rotate(0deg);
+				-moz-transform:rotate(0deg);
+				-webkit-transform:rotate(0deg);
+				-o-transform:rotate(0deg);}
+			100%{transform:rotate(360deg);
+			-ms-transform:rotate(360deg);
+			-moz-transform:rotate(360deg);
+			-webkit-transform:rotate(360deg);
+			-o-transform:rotate(360deg);}
+		}
+		@-o-keyframes music_on{
+			0% {transform:rotate(0deg);
+				-ms-transform:rotate(0deg);
+				-moz-transform:rotate(0deg);
+				-webkit-transform:rotate(0deg);
+				-o-transform:rotate(0deg);}
+			100%{transform:rotate(360deg);
+				-ms-transform:rotate(360deg);
+				-moz-transform:rotate(360deg);
+				-webkit-transform:rotate(360deg);
+				-o-transform:rotate(360deg);}
+		}

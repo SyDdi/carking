@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="format-detection" content="telephone=no">
+<title>选择车辆品牌-行情价</title>
+<link href="css/css.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <script type="text/javascript" src="js/jquery.js"></script>
+</head>
+
+<body>
+<header>
+ <div class="menu_mc">
+  <dl>
+   <dd class="fh"><a href="#" onClick="javascript :history.back(-1);">关闭</a></dd>
+   <dt>选择车辆品牌</dt>
+   <dd></dd>
+  </dl>
+ </div>
+</header>
+
+<div class="intro_fd_zm">
+ <ul>
+
+ </ul>
+</div>
+
+<!--<section class="mpT49">-->
+ <!--<div class="intro_pp_rm">-->
+  <!--<ul>-->
+   <!--<li><dl><dt><img src="images/intro_pp_rm01.png"></dt><dd>大众</dd></dl></li>-->
+   <!--<li><dl><dt><img src="images/intro_pp_rm02.png"></dt><dd>现代</dd></dl></li>-->
+   <!--<li><dl><dt><img src="images/intro_pp_rm03.png"></dt><dd>福特</dd></dl></li>-->
+   <!--<li><dl><dt><img src="images/intro_pp_rm04.png"></dt><dd>宝马</dd></dl></li>-->
+   <!--<li><dl><dt><img src="images/intro_pp_rm05.png"></dt><dd>别克</dd></dl></li>-->
+   <!--<li><dl><dt><img src="images/intro_pp_rm06.png"></dt><dd>本田</dd></dl></li>-->
+   <!--<li><dl><dt><img src="images/intro_pp_rm07.png"></dt><dd>奥迪</dd></dl></li>-->
+   <!--<li><dl><dt><img src="images/intro_pp_rm08.png"></dt><dd>雪佛兰</dd></dl></li>-->
+   <!--<li><dl><dt><img src="images/intro_pp_rm09.png"></dt><dd>丰田</dd></dl></li>-->
+   <!--<li><dl><dt><img src="images/intro_pp_rm10.png"></dt><dd>日产</dd></dl></li>-->
+  <!--</ul>-->
+ <!--</div>-->
+<!--</section>-->
+
+<div id="content">
+
+</div>
+
+<script type="text/javascript">
+ $.ajax({
+  url: "http://localhost:8080/car/api/getAllCarList",
+  type: "GET",
+  dataType:'json',
+  success:function (result) {
+   for (var i in result.data[0]) {
+    $('#content').append('<section><div class="intro_fhys01" name="intro_fhys01_' + i + '" id="intro_fhys01_' + i + '">' + i + '</div></section>');
+    $('ul').append('<li><a href="#intro_fhys01_' + i +  '">' + i + '</a></li>');
+    for (var t in result.data[0][i]) {
+     console.log(result.data[0][i][t]);
+     $('#intro_fhys01_' + i).after('<section><div class="intro_pp_lst"><dl><dt><img src="images/intro_pp_lst' + result.data[0][i][t].pic_id + '.png"></dt><dd>' + result.data[0][i][t].brand_name_cn + '</dd></dl></div></section>');
+    }
+
+   }
+  },
+  error:function(er){
+   BackErr(er);}
+ });
+</script>
+
+</body>
+</html>

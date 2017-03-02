@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.mp.persistence.readonly.CheapCarSourceMapper">
+	<!-- 获取搜索历史 -->
+	<select id="list" parameterType="com.car.mp.domain.dto.CheapCarSourceDTO"
+		resultType="com.car.mp.domain.CheapCarSourceEntity">
+		SELECT
+			id,
+			license_day as licenseDay,
+			license_area as licenseArea ,
+			car_area as carArea ,
+			brand,
+			brand_id as brandId,
+			colour,
+			car_mode as carMode,
+			mileage,
+			factory_price as factoryPrice,
+			factory_tax_price as factoryTaxPrice,
+			quoted_price as quotedPrice,
+			hqj_buy_price as buyPrice,
+			hqj_sell_price as sellPrice,
+			profit_rate as profitRate,
+			src_name as srcName,
+			url,
+			online_day as findDay
+		FROM 
+			cheap_car_source 
+		<where>
+			<if test="areaId != null and areaId != 0">
+				and car_area_id = #{areaId}
+			</if>
+			<if test="findDay != null and findDay != ''">
+				and online_day = #{findDay}
+			</if>
+			<if test="brandName != null and brandName != ''">
+				and brand = #{brandName}
+			</if>
+			<if test="modelName != null and modelName != ''">
+				and car_mode LIKE #{modelName}
+			</if>
+		</where>	
+		order by online_day asc
+		limit #{start}, #{pageSize}	;
+	</select>
+
+	<select id="listCount" parameterType="com.car.mp.domain.dto.CheapCarSourceDTO"
+		resultType="int">
+		SELECT
+			count(1) as cnt
+		FROM 
+			cheap_car_source 
+		<where>
+			<if test="areaId != null and areaId != 0">
+				and car_area_id = #{areaId}
+			</if>
+			<if test="findDay != null and findDay != ''">
+				and online_day = #{findDay}
+			</if>
+			<if test="brandName != null and brandName != ''">
+				and brand = #{brandName}
+			</if>
+			<if test="modelName != null and modelName != ''">
+				and car_mode LIKE #{modelName}
+			</if>
+		</where>	
+	</select>
+
+	<!-- 获取品牌列表 -->
+	<select id="brandList" parameterType="com.car.mp.domain.dto.CheapCarSourceDTO"
+			resultType="com.car.mp.domain.CheapCarSourceEntity">
+		SELECT
+			brand,
+			brand_id as brandId
+		FROM
+		cheap_car_source
+		<where>
+			<if test="areaId != null and areaId != 0">
+				and car_area_id = #{areaId}
+			</if>
+			<if test="findDay != null and findDay != ''">
+				and online_day = #{findDay}
+			</if>
+			AND brand != ""
+		</where>
+		GROUP BY brand
+		ORDER BY brand_id asc ,brand ASC ;
+	</select>
+
+	<!-- 获取品牌列表 -->
+	<select id="areaList" parameterType="com.car.mp.domain.dto.CheapCarSourceDTO"
+			resultType="com.car.mp.domain.CarAreaEntity">
+		SELECT
+			m.id,
+			m.car_area_id as carAreaId,
+			c.car_area as carAreaName
+		FROM
+			cheap_car_source as c
+		LEFT JOIN
+			m_car_area as m
+		ON
+			c.car_area = m.car_area_name
+		<where>
+			<if test="findDay != null and findDay != ''">
+				and online_day = #{findDay}
+			</if>
+			AND car_area != ""
+		</where>
+		GROUP BY car_area;
+	</select>
+</mapper>

@@ -1,0 +1,9 @@
+.fy{margin-top:15px; text-align:center; font-size:14px; line-height:32px; color:#ffffff;}
+.fy a{color:#333333;}
+.fy a:hover{color:#ff6600;}
+.fy a em{font-style:normal; font-size:14px; color:#333333; border:1px solid #837A91; border-radius:3px 3px 3px 3px; padding:5px 13px; height:32px; line-height:32px; background-color:#F7F7F7; overflow:hidden;}
+.fy a:hover em{color:#ff6600;}
+.fy span em{font-style:normal; font-size:14px; color:#ffffff; border:1px solid #837A91; border-radius:3px 3px 3px 3px; padding:5px 13px; height:32px; line-height:32px; background-color:#837A91; overflow:hidden;}
+
+.fy .input_01{width:50px; border:1px solid #837A91; border-radius:3px 3px 3px 3px; font-size:14px; line-height:30px; color:#333333; text-align:center;}
+.fy .input_02{width:40px; border:1px solid #837A91; border-radius:3px 3px 3px 3px; font-size:14px; line-height:30px; color:#333333;}

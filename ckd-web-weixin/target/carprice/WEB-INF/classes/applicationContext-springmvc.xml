@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--必须定义到mvc之前，否则cotroller里面的@Reference将不生效-->
+    <import resource="classpath:dubbo-consumer.xml"/>
+
+	<!-- 自动扫描且只扫描@Controller -->
+	<context:component-scan base-package="com.car.mp.controller"  use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+
+    <!--加入spring注解扫描-->
+    <context:component-scan base-package="com.car.mp.service" />
+	
+	<!-- 将无法mapping到Controller的path交给default servlet handler处理 -->		
+	<mvc:default-servlet-handler/>
+
+	<mvc:annotation-driven />
+
+	<!-- spring 通用视图解析器  -->
+	<bean id="commonViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+	</bean>
+
+    <mvc:resources location="/static/js/" mapping="/static/js/*.*" />
+    <mvc:resources location="/static/images/" mapping="/static/images/*.*" />
+    <mvc:resources location="/static/css/" mapping="/static/css/*.*" />
+    <mvc:resources location="/static/" mapping="/static/*.*" />
+
+    <mvc:interceptors>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <!-- 需排除拦截的地址-->
+            <mvc:exclude-mapping path="/static/**"/>
+            <bean class="com.car.mp.inteceptor.BaseInteceptor"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/pinggu/**"/>
+            <mvc:mapping path="/transfer**"/>
+            <mvc:mapping path="/my/**"/>
+            <mvc:mapping path="/car/**"/>
+            <!-- 需排除拦截的地址-->
+            <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <bean class="com.car.mp.inteceptor.LoginInteceptor"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/pinggu/**"/>
+            <mvc:mapping path="/brand/**"/>
+            <mvc:mapping path="/transfer/**"/>
+            <mvc:mapping path="/myfavorite/**"/>
+            <!-- 需排除拦截的地址-->
+            <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
+            <bean class="com.car.mp.inteceptor.TimeInteceptor"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <!-- 如果不定义 mvc:mapping path 将拦截所有的URL请求 -->
+            <mvc:mapping path="/pinggu/result.html**"/>
+            <bean class="com.car.mp.inteceptor.FrequencyHandlerInterceptor"></bean>
+        </mvc:interceptor>
+
+    </mvc:interceptors>
+</beans> 

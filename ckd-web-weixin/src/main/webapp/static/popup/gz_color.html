@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+	<title>选择颜色-行情价</title>
+	<link href="../css/css.css?20161020" rel="stylesheet" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+</head>
+
+<body>
+<header>
+	<div class="menu_mc">
+		<dl>
+			<dd class="fh"><a href="javascript:void(0);" onclick="window.history.back();">关闭</a></dd>
+			<dt>选择颜色</dt>
+			<dd></dd>
+		</dl>
+	</div>
+</header>
+
+<section class="mpT49">
+	<div class="intro_xzys_lst">
+		<ul>
+			<li><dl><dt><ol class="col01"></ol></dt><dd id="1">白色</dd></dl></li>
+			<li><dl><dt><ol class="col02"></ol></dt><dd id="2">黑色</dd></dl></li>
+			<li><dl><dt><ol class="col03"></ol></dt><dd id="3">咖啡色</dd></dl></li>
+			<li><dl><dt><ol class="col04"></ol></dt><dd id="4">橙色</dd></dl></li>
+			<li><dl><dt><ol class="col05"></ol></dt><dd id="5">灰色</dd></dl></li>
+			<li><dl><dt><ol class="col06"></ol></dt><dd id="6">紫色</dd></dl></li>
+			<li><dl><dt><ol class="col07"></ol></dt><dd id="7">红色</dd></dl></li>
+			<li><dl><dt><ol class="col08"></ol></dt><dd id="8">绿色</dd></dl></li>
+			<li><dl><dt><ol class="col09"></ol></dt><dd id="9">蓝色</dd></dl></li>
+			<li><dl><dt><ol class="col10"></ol></dt><dd id="10">银色</dd></dl></li>
+			<li><dl><dt><ol class="col11"></ol></dt><dd id="11">香槟色</dd></dl></li>
+			<li><dl><dt><ol class="col12"></ol></dt><dd id="12">黄色</dd></dl></li>
+			<li><dl><dt><ol class="col13"></ol></dt><dd id="13">多彩色</dd></dl></li>
+			<li><dl><dt><ol class="col14">?</ol></dt><dd id="14">其他</dd></dl></li>
+		</ul>
+	</div>
+</section>
+
+<script type="text/javascript">
+	$('ul > li').bind('click', function(e) {
+		window.location.href = "../../pinggu?"+Math.random();
+        var text = $(this).find("dd").text();
+		var value = $(this).find("dd").attr("id");
+		setCookie('colorName', text);
+		setCookie('colorId', value);
+
+	});
+</script>
+</body>
+</html>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fed9ca6874b32c074b1602d4e1a78656";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>

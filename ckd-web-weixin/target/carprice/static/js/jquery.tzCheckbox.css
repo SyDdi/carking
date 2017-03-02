@@ -1,0 +1,45 @@
+.tzCheckBox{
+	background:url('background.png') no-repeat right bottom;
+	display:inline-block;
+	min-width:40px;
+	height:20px;
+	white-space:nowrap;
+	position:relative;
+	cursor:pointer;
+	margin:10px 0px 0px 10px;
+
+}
+
+.tzCheckBox.checked{
+	background-position:top left;
+	margin:10px 10px 0px 0px;
+}
+
+.tzCheckBox .tzCBContent{
+	color: white;
+	line-height: 20px;
+	text-align:left;
+	padding-left:0px;
+}
+
+.tzCheckBox.checked .tzCBContent{
+	text-align:left;
+	padding-left:20px;
+	
+}
+
+.tzCBPart{
+	background:url('background.png') no-repeat left bottom;
+	width:10px;
+	position:absolute;
+	top:0;
+	left:-10px;
+	height:20px;
+	overflow: hidden;
+}
+
+.tzCheckBox.checked .tzCBPart{
+	background-position:top right;
+	left:auto;
+	right:-10px;
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.car.repository.base.ModelMapper" >
+  <resultMap id="BaseResultMap" type="com.car.domain.Model" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="factory_id" property="factoryId" jdbcType="INTEGER" />
+    <result column="family_id" property="familyId" jdbcType="INTEGER" />
+    <result column="model_id" property="modelId" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="car_year" property="carYear" jdbcType="VARCHAR" />
+    <result column="sop_year" property="sopYear" jdbcType="VARCHAR" />
+    <result column="eop_year" property="eopYear" jdbcType="VARCHAR" />
+    <result column="low_price" property="lowPrice" jdbcType="INTEGER" />
+    <result column="high_price" property="highPrice" jdbcType="INTEGER" />
+    <result column="emission_standard" property="emissionStandard" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="TINYINT" />
+    <result column="body_style" property="bodyStyle" jdbcType="TINYINT" />
+    <result column="swept_volume" property="sweptVolume" jdbcType="VARCHAR" />
+    <result column="drive" property="drive" jdbcType="TINYINT" />
+    <result column="induction_description" property="inductionDescription" jdbcType="VARCHAR" />
+    <result column="fuel_type" property="fuelType" jdbcType="TINYINT" />
+    <result column="fuel_delivery" property="fuelDelivery" jdbcType="TINYINT" />
+    <result column="gear_type" property="gearType" jdbcType="TINYINT" />
+    <result column="door_num" property="doorNum" jdbcType="TINYINT" />
+    <result column="seat_capacity" property="seatCapacity" jdbcType="TINYINT" />
+    <result column="length" property="length" jdbcType="INTEGER" />
+    <result column="width" property="width" jdbcType="INTEGER" />
+    <result column="heigth" property="heigth" jdbcType="INTEGER" />
+    <result column="cylinders" property="cylinders" jdbcType="TINYINT" />
+    <result column="power" property="power" jdbcType="INTEGER" />
+    <result column="torque" property="torque" jdbcType="INTEGER" />
+    <result column="rank" property="rank" jdbcType="TINYINT" />
+    <result column="make_status" property="makeStatus" jdbcType="TINYINT" />
+    <result column="sale_status" property="saleStatus" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="family" property="family" jdbcType="VARCHAR" />
+    <result column="factory" property="factory" jdbcType="VARCHAR" />
+    <result column="autohome_id" property="autohomeId" jdbcType="VARCHAR" />
+    <result column="51car_id" property="51carId" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="price_info" property="priceInfo" jdbcType="VARCHAR" />
+    <result column="match_score" property="matchScore" jdbcType="REAL" />
+    <result column="short_name" property="shortName" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.mp.persistence.readonly.CarAreaMapper">
+	<!-- 获取搜索历史 -->
+	<select id="list" 	resultType="com.car.mp.domain.CarAreaEntity">
+		SELECT
+			id,
+			car_area_id as carAreaId,
+			car_area_name as carAreaName
+		FROM 
+			m_car_area;
+	</select>
+
+    <!-- 获取指定地区-->
+    <select id="get" parameterType="java.lang.Integer" resultType="com.car.mp.domain.CarAreaEntity">
+        select
+         	id,
+			car_area_id as carAreaId,
+			car_area_name as carAreaName
+         from m_car_area where car_area_id = #{areaId};
+    </select>
+</mapper>

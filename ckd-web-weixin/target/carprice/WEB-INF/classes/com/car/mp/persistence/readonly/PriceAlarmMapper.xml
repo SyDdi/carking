@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.mp.persistence.readonly.PriceAlarmMapper">
+	<!-- 获取搜索历史 -->
+	<select id="list" parameterType="com.car.mp.domain.dto.PriceAlarmDTO"
+		resultType="com.car.mp.domain.PriceAlarmEntity">
+		SELECT
+			a.id,
+			area,
+			brand,
+			factory,
+			car_line as carLine,
+			year,
+			car_model as carModel,
+			today_price as todayPrice,
+			yesterday_price as yesterdayPrice,
+			day_diff_price as dayDiffPrice,
+			week_ago_price as weekAgoPrice,
+			week_diff_price as weekDiffPrice,
+			month_diff_price as monthDiffPrice,
+			alarm_day as alarmDay,
+			month_ago_price as monthAgoPrice
+		FROM new_car_pirce_alarm as a
+
+		<where>
+			<if test="date != null and date != ''">
+				AND a.alarm_day = #{date}
+			</if>
+			<if test="areaId != null and areaId != 0">
+				AND a.area_id = #{areaId}
+			</if>
+
+            <if test="brand != null and brand != ''">
+                AND brand=#{brand}
+            </if>
+            <if test="factory != null and factory != ''">
+                AND factory=#{factory}
+            </if>
+            <if test="family != null and family != ''">
+                AND car_line like CONCAT('%',#{family},'%')
+            </if>
+		</where>
+		ORDER BY ABS(a.day_diff_price) desc
+		LIMIT #{start}, #{pageSize}	;
+	</select>
+
+	<select id="listCount" parameterType="com.car.mp.domain.dto.PriceAlarmDTO"
+		resultType="int">
+		SELECT
+			count(1) as cnt
+		FROM 
+			new_car_pirce_alarm as a
+		<where>
+			<if test="date != null and date != ''">
+				AND a.alarm_day = #{date}
+			</if>
+			<if test="areaId != null and areaId != 0">
+				AND a.area_id = #{areaId}
+			</if>
+            <if test="brand != null and brand != ''">
+                AND brand=#{brand}
+            </if>
+            <if test="factory != null and factory != ''">
+                AND factory=#{factory}
+            </if>
+            <if test="family != null and family != ''">
+                AND car_line like CONCAT('%',#{family},'%')
+            </if>
+		</where>
+	</select>
+</mapper>

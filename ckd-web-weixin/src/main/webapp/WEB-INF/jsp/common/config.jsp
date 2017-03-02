@@ -1,0 +1,1 @@
+<script> var ckdConfig = {"portal" : "${portal}","imgPath":"${imgPath}","WECHATAPPID":"${WECHATAPPID}","WEIXINURL":"${WEIXINURL}"}</script>

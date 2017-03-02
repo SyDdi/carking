@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../ckd-core/ckd-core.iml" filepath="$PROJECT_DIR$/../ckd-core/ckd-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ckd-parent.iml" filepath="$PROJECT_DIR$/ckd-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ckd-portal-web/ckd-portal-web.iml" filepath="$PROJECT_DIR$/../ckd-portal-web/ckd-portal-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ckd-service-api/ckd-service-api.iml" filepath="$PROJECT_DIR$/../ckd-service-api/ckd-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ckd-service-consumer/ckd-service-consumer.iml" filepath="$PROJECT_DIR$/../ckd-service-consumer/ckd-service-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ckd-service-nlp/ckd-service-nlp.iml" filepath="$PROJECT_DIR$/../ckd-service-nlp/ckd-service-nlp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ckd-service-provider/ckd-service-provider.iml" filepath="$PROJECT_DIR$/../ckd-service-provider/ckd-service-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ckd-taglibs/ckd-taglibs.iml" filepath="$PROJECT_DIR$/../ckd-taglibs/ckd-taglibs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ckd-web-admin/ckd-web-admin.iml" filepath="$PROJECT_DIR$/../ckd-web-admin/ckd-web-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ckd-web-weixin/ckd-web-weixin.iml" filepath="$PROJECT_DIR$/../ckd-web-weixin/ckd-web-weixin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ckd-weixin-demo/ckd-weixin-demo.iml" filepath="$PROJECT_DIR$/../ckd-weixin-demo/ckd-weixin-demo.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for ckd-core" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ckd-core" />
+      </profile>
+      <profile default="false" name="Annotation profile for ckd-web-weixin" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ckd-web-weixin" />
+      </profile>
+      <profile default="false" name="Annotation profile for ckd-service-provider" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ckd-service-provider" />
+      </profile>
+      <profile default="false" name="Annotation profile for ckd-service-nlp" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ckd-service-nlp" />
+      </profile>
+      <profile default="false" name="Annotation profile for ckd-service-api" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ckd-service-api" />
+      </profile>
+      <profile default="false" name="Annotation profile for ckd-portal-web" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ckd-portal-web" />
+      </profile>
+      <profile default="false" name="Annotation profile for ckd-service-consumer" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ckd-service-consumer" />
+      </profile>
+      <profile default="false" name="Annotation profile for ckd-weixin-demo" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ckd-weixin-demo" />
+      </profile>
+      <profile default="false" name="Annotation profile for ckd-taglibs" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ckd-taglibs" />
+      </profile>
+      <profile default="false" name="Annotation profile for ckd-web-admin" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ckd-web-admin" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ckd-core" target="1.7" />
+      <module name="ckd-parent" target="1.5" />
+      <module name="ckd-portal-web" target="1.7" />
+      <module name="ckd-service-api" target="1.7" />
+      <module name="ckd-service-consumer" target="1.7" />
+      <module name="ckd-service-nlp" target="1.7" />
+      <module name="ckd-service-provider" target="1.7" />
+      <module name="ckd-taglibs" target="1.7" />
+      <module name="ckd-web-admin" target="1.7" />
+      <module name="ckd-web-weixin" target="1.7" />
+      <module name="ckd-weixin-demo" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

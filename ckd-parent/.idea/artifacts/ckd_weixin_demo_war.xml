@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ckd-weixin-demo:war">
+    <output-path>$PROJECT_DIR$/../ckd-weixin-demo/target</output-path>
+    <root id="archive" name="ckd-weixin-demo.war">
+      <element id="artifact" artifact-name="ckd-weixin-demo:war exploded" />
+    </root>
+  </artifact>
+</component>

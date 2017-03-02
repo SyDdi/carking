@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.car.repository.biz.CollectionMapper" >
+  <resultMap id="BaseResultMap" type="com.car.domain.Collection" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="vehicle_id" property="vehicleId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <association property="vehicle" column="vehicle_id" select="com.car.repository.biz.VehicleMapper.findVehicleById" javaType="com.car.domain.Vehicle"/>
+  </resultMap>
+
+  <select id="findCollCount" parameterType="com.car.domain.Collection" resultType="java.lang.Integer">
+    select count(1) from t_collection where status = 1
+    <if test="vehicleId != null ">
+      and vehicle_id = #{vehicleId}
+    </if>
+    <if test="userId != null ">
+      and user_id = #{userId}
+    </if>
+  </select>
+
+
+</mapper>

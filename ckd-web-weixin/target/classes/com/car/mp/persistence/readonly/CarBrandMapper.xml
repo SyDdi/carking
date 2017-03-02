@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.mp.persistence.readonly.CarBrandMapper">
+
+    <!-- 获取热门车型 -->
+    <select id="getHotCarList" parameterType="com.car.mp.domain.CarBrand" resultType="com.car.mp.domain.CarBrand">
+    	select id,brand_name_cn,brand_name_en,first_letter,brand_id,father_brand_id,brand_level,pic_id,hot_flag from car_brand where hot_flag=1;
+    </select>
+
+    <!-- 获取车型列表 -->
+    <select id="getAllCarList" parameterType="com.car.mp.domain.CarBrand" resultType="com.car.mp.domain.CarBrand">
+    	select id,brand_name_cn,brand_name_en,first_letter,brand_id,father_brand_id,brand_level,pic_id,hot_flag from car_brand order by first_letter,id limit 10000;
+    </select>
+
+	<!-- 获取厂商列表 -->
+	<select id="getFactoryList" parameterType="java.lang.Integer"
+		resultType="com.car.mp.domain.CarFactoryEntity">
+		select
+			id
+			,factory_name_cn as factoryNameCn
+			,factory_name_en as factoryNameEn
+			,factory_id as factoryId
+		from 
+			car_factory
+		WHERE
+			brand_id = #{brandId};
+	</select>
+
+	<!-- 获取指定品牌 -->
+	<select id="getBrand" parameterType="java.lang.Integer" resultType="com.car.mp.domain.CarBrand">
+		select id,brand_name_cn,brand_name_en,first_letter,brand_id,father_brand_id,brand_level,pic_id,hot_flag from car_brand where brand_id = #{brandId};
+	</select>
+
+
+	<!-- 获取指定车系 -->
+	<select id="getFactoryById" parameterType="java.lang.Integer" resultType="com.car.mp.domain.CarFactoryEntity">
+		select
+			id
+			,factory_name_cn as factoryNameCn
+			,factory_name_en as factoryNameEn
+			,factory_id as factoryId
+			,brand_id as brandId
+		from
+			car_factory
+		WHERE
+			factory_id = #{factoryId};
+	</select>
+</mapper>

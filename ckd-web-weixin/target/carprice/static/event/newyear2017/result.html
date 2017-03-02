@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="format-detection" content="telephone=no">
+<title>行情价-汽车价格权威</title>
+<link href="/static/css/new_year.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript" src="/static/js/event/newyear2017/gewara.js"></script>
+</head>
+<body>
+<div class="new_year_topbg" style="z-index: -3;display: none;"><img src="/static/images/newyear2017/new_year_06.jpg"></div>
+<a class="floatBtn music_on" id="musicSwitch" onclick="musicSwitch();" style="right:20px; top:20px;"></a>
+
+<audio id="myaudio" loop="loop" controls="controls" autoplay="autoplay"  style="display:none;"  src="/static/music/bg_music.mp3"><source src="/static/music/bg_music.mp3" type="audio/mpeg"/></audio>
+
+<script>
+
+//	function musicSwitch(){
+//		var myaudio = document.getElementById('myaudio');
+//		var _this=$('#musicSwitch');
+//		if(_this.hasClass('music_on')||_this.hasClass(' music_on')) {
+//			_this.removeClass('music_on');
+//			_this.addClass('music_off');
+//			myaudio.pause();
+//		}
+//		else if(_this.hasClass('music_off')||_this.hasClass(' music_off')){
+//			_this.removeClass('music_off');
+//			_this.addClass('music_on');
+//			myaudio.play();
+//		}
+//	}
+
+
+			var audioLoaded=false;
+			$(document).ready(function(){
+				var myaudio = document.getElementById('myaudio');
+				if(/i(Phone|P(o|a)d)/.test(navigator.userAgent)){
+					$(document).on('touchstart', function (e) {
+						if(false == audioLoaded){
+							myaudio.load();
+							audioLoaded=true;
+						}
+					});
+				}
+			});
+			function musicSwitch(){
+				var myaudio = document.getElementById('myaudio');
+				var _this=$('#musicSwitch');
+				if(_this.hasClass('music_on')||_this.hasClass(' music_on')) {
+					_this.removeClass('music_on');
+					_this.addClass('music_off');
+					myaudio.pause();
+				}
+				else if(_this.hasClass('music_off')||_this.hasClass(' music_off')){
+					_this.removeClass('music_off');
+					_this.addClass('music_on');
+					myaudio.play();
+				}
+			}
+			var skip=function(){
+				showPage(1);
+			}
+			var showRules=function() {
+				$('#popRules').show();
+			}
+			var pages=$('.page');
+			var showPage=function(i){
+				pages.hide();
+				pages.eq(i).show();//显示
+
+			}
+
+		</script>
+
+
+
+
+<div class="new_year_topbg"><img src="/static/images/newyear2017/new_year_03.jpg"></div>
+<div class="new_year_header_02" id="carImg"></div>
+<div class="new_year_title01">
+	<dl>
+		<dt id="desc"></dt>
+		<dd id="carName"></dd>
+	</dl>
+</div>
+<div class="new_year_zfy">
+	<ul><li>车王行情价祝您鸡年大吉心想事成！</li></ul>
+</div>
+<div class="new_year_button02">
+	<dl>
+		<dt><button class="t1" onclick='window.location.href = "/static/event/newyear2017/index.html"'>我也试试</button></dt>
+		<dd> <button class="t2" onclick='document.querySelector(".new_year_fx").style.display=""'>分享</button></dd>
+	</dl>
+</div>
+
+
+<div class="new_year_fx" style="display: none;" onclick='document.querySelector(".new_year_fx").style.display="none"'><img src="/static/images/newyear2017/intro_car_details_02.png"></div>
+<div class="new_year_erwm1">
+	<img src="/static/images/newyear2017/二维码02.gif"/>
+</div>
+<div class="new_year_fx" style="display: none;"><img src="/static/images/newyear2017/intro_car_details_02.png"></div>
+<script>
+
+	window.onload = function () {
+		var userName = GetQueryString("userName");
+		var carName = GetQueryString("carName");
+		var imgName = GetQueryString("imgName");
+
+		if (userName != null && userName != "") {
+			//设置title 等信息
+			var desc = userName + "2017年的座驾是";
+			document.getElementById("desc").innerHTML = desc;
+			document.getElementById("carName").innerHTML = carName;
+			document.getElementById("carImg").innerHTML = '<img src="/static/images/event/car2017/' + imgName + '.jpg">';
+			document.title = desc + carName;
+
+			var i = document.createElement('iframe');
+			i.src = '//m.baidu.com/favicon.ico';
+			i.style.display = 'none';
+			setTimeout(function () {
+				// i.remove();
+			}, 9)
+			document.body.appendChild(i);
+		}
+	};
+
+	function GetQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null) {
+			return decodeURI(r[2]);
+		}
+		return null;
+	}
+
+</script>
+
+</body>
+</html>

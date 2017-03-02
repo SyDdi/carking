@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ckd-service-provider:war">
+    <output-path>$PROJECT_DIR$/../ckd-service-provider/target</output-path>
+    <root id="archive" name="dubbo.war">
+      <element id="artifact" artifact-name="ckd-service-provider:war exploded" />
+    </root>
+  </artifact>
+</component>

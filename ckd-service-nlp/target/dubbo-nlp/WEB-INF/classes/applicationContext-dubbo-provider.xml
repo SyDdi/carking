@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="ckd-portal-nlp"/>
+
+    <!--zookeeper注册中心 ,192.168.188.82:2181-->
+    <dubbo:registry protocol="zookeeper" address="${zookeeper.address}" />
+
+    <!-- 使用multicast广播注册中心暴露服务地址 -->
+    <!--<dubbo:registry address="multicast://224.5.6.7:1234" />-->
+
+    <!-- 当ProtocolConfig和ServiceConfig某属性没有配置时,采用此缺省值 -->
+    <dubbo:provider timeout="10000" threadpool="fixed" threads="100" accepts="1000" />
+
+    <!--通讯配置-->
+    <dubbo:protocol name="dubbo"  dispatcher="all" threadpool="fixed" threads="20" port="20881" />
+    <!-- 声明需要暴露的服务接口 -->
+    <!-- 使用注解方式暴露接口 -->
+    <dubbo:annotation package="com.car.nlp.service" />
+
+
+</beans>

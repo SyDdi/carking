@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="format-detection" content="telephone=no">
+<title>行情价-汽车价格权威</title>
+<link href="/static/css/new_year.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+<body>
+	
+
+
+<div class="new_year_topbg"><img src="/static/images/newyear2017/new_year_06.jpg"></div>
+<div class="new_year_title">新的一年你的座驾是？</div>
+<div class="new_year_button01">
+ <dl>
+ 	<dt><input name="username" id="username" type="text" value="请输入你的姓名" style="color:#e3977e;" onfocus="if(value=='请输入你的姓名'){this.style.color='#e85900';value=''}" onblur="if(value==''){this.style.color='#e3977e';value='请输入你的姓名'}"></dt>
+ 	<dd><button class="t1" onclick="calculate();">立即计算</button></dd>
+ 	<dd><button class="t2" onclick='document.querySelector(".new_year_fx").style.display=""'>分享</button></dd>
+ </dl>
+</div>
+<div class="new_year_fx" style="display: none;" onclick='document.querySelector(".new_year_fx").style.display="none"'><img src="/static/images/newyear2017/intro_car_details_02.png"></div>
+<div class="new_year_copyright">Copyright © 2017 车王行情价</div>
+<div class="new_year_bottombg"><img src="/static/images/newyear2017/new_year_02.jpg"></div>
+</body>
+</html>
+<script>
+
+	var param = '{"car":[{"carName":"宝马 7系","img":"1"},{"carName":"宝马 X5 M","img":"2"},{"carName":"奥迪 A8","img":"3"},{"carName":"奥迪 R8","img":"4"},{"carName":"奥迪 Q7","img":"5"},{"carName":"保时捷 911","img":"6"},{"carName":"保时捷Panamera","img":"7"},{"carName":"保时捷 卡宴","img":"8"},{"carName":"奔驰 S350","img":"9"},{"carName":"奔驰 GLE AMG","img":"10"},{"carName":"迈巴赫 S级","img":"11"},{"carName":"英菲尼迪 Q70","img":"12"},{"carName":"英菲尼迪 QX80","img":"13"},{"carName":"雷克萨斯 LS","img":"14"},{"carName":"雷克萨斯 LX","img":"15"},{"carName":"丰田 兰德酷路泽","img":"16"},{"carName":"福特 野马","img":"17"},{"carName":"玛莎拉蒂 总裁","img":"18"},{"carName":"捷豹 XJ","img":"19"},{"carName":"大众 途锐","img":"20"},{"carName":"JEEP 大切诺基","img":"21"},{"carName":"凯迪拉克 凯雷德","img":"22"},{"carName":"路虎 揽胜","img":"23"},{"carName":"讴歌 ZDX","img":"24"},{"carName":"特斯拉 MODEL X","img":"25"},{"carName":"哈雷摩托","img":"26"},{"carName":"小毛驴","img":"27"},{"carName":"奥迪 A7","img":"28"},{"carName":"奥迪 S6","img":"29"},{"carName":"奥迪 TT","img":"30"},{"carName":"宝马 3系GT","img":"31"},{"carName":"宝马 4系","img":"32"},{"carName":"宝马 M3","img":"33"},{"carName":"保时捷 Macan","img":"34"},{"carName":"保时捷 cayman","img":"35"},{"carName":"奔驰 CLS","img":"36"},{"carName":"奔驰 E级","img":"37"},{"carName":"奔驰 SLC","img":"38"},{"carName":"奔驰C级AMG","img":"39"},{"carName":"奔驰G级AMG","img":"40"},{"carName":"宾利欧陆","img":"41"},{"carName":"大众辉昂","img":"42"},{"carName":"大众尚酷","img":"43"},{"carName":"法拉利 488","img":"44"},{"carName":"丰田皇冠","img":"45"},{"carName":"本田 冠道","img":"46"},{"carName":"摩拜","img":"47"}]}';
+
+	function calculate(){
+		var userName = document.getElementById("username").value;
+		if(userName == "" || userName == "请输入你的姓名"){
+			alert("请输入你的姓名");
+			return ;
+		}
+
+		// 获取车辆名称和图片名称
+		var random = Math.round(Math.random()*46);
+		var tmp = eval("("+param+")");
+		var carName =tmp.car[random].carName;
+		var imgName =tmp.car[random].img;
+		window.location.href = "/static/event/newyear2017/result.html?userName="+userName+"&carName="+carName+"&imgName="+imgName;
+	}
+
+</script>
+</html>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?fed9ca6874b32c074b1602d4e1a78656";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
